@@ -105,6 +105,11 @@ size_t JsonWriteRichPresenceObj(char* dest,
             if (presence != nullptr) {
                 WriteObject activity(writer, "activity");
 
+                WriteKey(writer, "type");
+                writer.Int(presence->type);
+
+                WriteOptionalString(writer, "name", presence->name);
+
                 WriteOptionalString(writer, "state", presence->state);
                 WriteOptionalString(writer, "details", presence->details);
 
